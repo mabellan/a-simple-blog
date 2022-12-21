@@ -29,6 +29,8 @@
     <None Remove="Infrastructure\Delivery\Model\Pagination\" />
     <None Remove="Domain\Post\Model\" />
     <None Remove="Domain\Post\Services\" />
+    <None Remove="Infrastructure\Delivery\Configuration\" />
+    <None Remove="Domain\Post\Command\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
@@ -41,5 +43,7 @@
     <Folder Include="Infrastructure\Delivery\Model\Pagination\" />
     <Folder Include="Domain\Post\Model\" />
     <Folder Include="Domain\Post\Services\" />
+    <Folder Include="Infrastructure\Delivery\Configuration\" />
+    <Folder Include="Domain\Post\Command\" />
   </ItemGroup>
 </Project>
