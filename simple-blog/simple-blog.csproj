@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>simple_blog</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.1" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Remove="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <None Remove="infrastructure\delivery\Controllers\" />
+    <None Remove="infrastructure\delivery\Model\" />
+    <None Remove="infrastructure\delivery\Model\Post\" />
+    <None Remove="infrastructure\delivery\Exceptions\" />
+    <None Remove="Domain\" />
+    <None Remove="Infrastructure\Delivery\Controllers\Posts\" />
+    <None Remove="Infrastructure\Persistance\" />
+    <None Remove="Infrastructure\Persistance\Database\" />
+    <None Remove="Infrastructure\Persistance\Database\Postgresql\" />
+    <None Remove="Infrastructure\Domain\" />
+    <None Remove="Infrastructure\Domain\Posts\" />
+    <None Remove="Infrastructure\Delivery\Model\Pagination\" />
+    <None Remove="Domain\Post\Model\" />
+    <None Remove="Domain\Post\Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Domain\" />
+    <Folder Include="Infrastructure\Delivery\Controllers\Posts\" />
+    <Folder Include="Infrastructure\Persistance\" />
+    <Folder Include="Infrastructure\Persistance\Database\" />
+    <Folder Include="Infrastructure\Persistance\Database\Postgresql\" />
+    <Folder Include="Infrastructure\Domain\" />
+    <Folder Include="Infrastructure\Domain\Posts\" />
+    <Folder Include="Infrastructure\Delivery\Model\Pagination\" />
+    <Folder Include="Domain\Post\Model\" />
+    <Folder Include="Domain\Post\Services\" />
+  </ItemGroup>
+</Project>
