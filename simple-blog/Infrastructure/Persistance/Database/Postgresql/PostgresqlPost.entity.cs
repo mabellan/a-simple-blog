@@ -32,7 +32,7 @@ namespace simple_blog.Infrastructure.Persistance.Database.Postgresql
             Title = title;
             Body = body;
             IsDraft = true;
-            CreatedAt = DateTime.Now;
+            CreatedAt = DateTime.UtcNow;
         }
     }
 }

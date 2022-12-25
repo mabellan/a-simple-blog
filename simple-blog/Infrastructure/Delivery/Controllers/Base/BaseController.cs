@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using simple_blog.Infrastructure.Delivery.Configuration;
 using simple_blog.Infrastructure.Delivery.Exceptions;
 
 namespace simple_blog.Infrastructure.Delivery.Controllers.Base

@@ -12,7 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using simple_blog.Domain.Post;
+using simple_blog.Domain.Post.Command;
 using simple_blog.Domain.Post.Model;
+using simple_blog.Infrastructure.Delivery.Configuration;
 using simple_blog.Infrastructure.Domain.Posts;
 using simple_blog.Infrastructure.Persistance.Database;
 using simple_blog.Services;
@@ -34,8 +36,11 @@ namespace simple_blog
             services.AddDbContext<SimpleBlogDatabase>(options =>
                                                          options.UseNpgsql(Configuration.GetConnectionString("Database")));
             services.AddCors();
+            services.AddSingleton<ICommandBus, CommandBus>();
+            services.AddTransient<ICommandHandler<AddPostCommand>, AddPostCommandHandler>();
             services.AddScoped<IPostRepository, NpgsqlPostRepository>();
             services.AddScoped<PostsService, PostsService>();
+
 
             services.AddControllers();
         }
@@ -63,6 +68,8 @@ namespace simple_blog
             {
                 endpoints.MapControllers();
             });
+
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         }
     }
 }
