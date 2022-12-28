@@ -19,64 +19,7 @@ namespace simple_blog.Services
         {
             baseRepository = _baseRepository;
         }
-
-        /// <summary>
-        /// Adds a new Post.
-        /// </summary>
-        /// <param name="postsRequest"></param>
-        /// <returns></returns>
-        public PostResponse Add(PostRequest postsRequest)
-        {
-            if (!postsRequest.IsValid())
-            {
-                throw new InvalidFormatException("Fields Title, Body and IsDraft are mandatory");
-            }
-
-            Post post = new Post(postsRequest.Title, postsRequest.Body);
-
-            return new PostResponse(baseRepository.Add(post));
-        }
-
-        /// <summary>
-        /// Updates an existing Post. If the post does not exist an exception is thrown.
-        /// </summary>
-        /// <param name="postId"></param>
-        /// <param name="postRequest"></param>
-        /// <returns></returns>
-        public PostResponse Update(int postId, PostRequest postRequest)
-        {
-            if (!postRequest.IsValid())
-            {
-                throw new InvalidFormatException("Fields Title, Body and IsDraft are mandatory");
-            }
-
-            Post post = GetById(postId);
-
-            post.Title = postRequest.Title;
-            post.Body = postRequest.Body;
-            post.IsDraft = postRequest.IsDraft;
-            post.UpdatedAt = DateTime.Now;
-
-            return new PostResponse(baseRepository.Update(post));
-        }
-
-        /// <summary>
-        /// Gets a Post by its identifier.
-        /// </summary>
-        /// <param name="postId"></param>
-        /// <returns></returns>
-        private Post GetById(int postId)
-        {
-            Post post = baseRepository.GetById(postId);
-
-            if (post == null)
-            {
-                throw new NotFoundException($"No post found with ID {postId}");
-            }
-
-            return post;
-        }
-
+    
         /// <summary>
         /// Gets a paginated list with posts. Title filter is available.
         /// </summary>
@@ -93,16 +36,6 @@ namespace simple_blog.Services
             int totalElements = baseRepository.GetTotalElements();
 
             return new PaginationResponse<PostResponse>(baseRepository.List(titleFilter, page.Value).ConvertAll(post => new PostResponse(post)), totalElements);
-        }
-
-        /// <summary>
-        /// Gets a Post by its identifier.
-        /// </summary>
-        /// <param name="postId"></param>
-        /// <returns></returns>
-        public PostResponse Get(int postId)
-        {
-            return new PostResponse(GetById(postId));
         }
 
         /// <summary>

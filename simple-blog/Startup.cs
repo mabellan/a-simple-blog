@@ -14,6 +14,7 @@ using Microsoft.Extensions.Logging;
 using simple_blog.Domain.Post;
 using simple_blog.Domain.Post.Command;
 using simple_blog.Domain.Post.Model;
+using simple_blog.Domain.Post.Query;
 using simple_blog.Infrastructure.Delivery.Configuration;
 using simple_blog.Infrastructure.Domain.Posts;
 using simple_blog.Infrastructure.Persistance.Database;
@@ -37,9 +38,13 @@ namespace simple_blog
                                                          options.UseNpgsql(Configuration.GetConnectionString("Database")));
             services.AddCors();
             services.AddSingleton<ICommandBus, CommandBus>();
-            services.AddTransient<ICommandHandler<AddPostCommand>, AddPostCommandHandler>();
             services.AddScoped<IPostRepository, NpgsqlPostRepository>();
             services.AddScoped<PostsService, PostsService>();
+
+
+            services.AddTransient<IQueryHandler<GetPostByIdQuery, Post>, GetPostByIdQueryHandler>();
+
+            services.AddTransient<QueryBus>();
 
 
             services.AddControllers();

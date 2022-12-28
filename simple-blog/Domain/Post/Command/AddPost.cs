@@ -7,12 +7,12 @@ namespace simple_blog.Domain.Post.Command
     public class AddPostCommand: ICommand
     {
         public string Title { get; set; }
-        public string Body { get; set; }
+        public Body Body { get; set; }
 
         public AddPostCommand(string title, string body)
         {
             Title = title;
-            Body = body;
+            Body = new Body(body);
         }
     }
 
@@ -27,7 +27,7 @@ namespace simple_blog.Domain.Post.Command
 
         public void Handle(AddPostCommand command)
         {
-            _postRepository.Add(new Model.Post(command.Title, command.Body));
+            _postRepository.Add(new Model.Post(0, command.Title, command.Body.aBody, true, DateTime.Now));
         }
     }
 }

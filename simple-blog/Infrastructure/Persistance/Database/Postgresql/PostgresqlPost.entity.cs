@@ -27,12 +27,15 @@ namespace simple_blog.Infrastructure.Persistance.Database.Postgresql
         [Column("deleted_at")]
         public DateTime? DeletedAt { get; set; }
 
-        public PostgresqlPost(string title, string body)
+        public PostgresqlPost(int id, string title, string body, bool isDraft, DateTime createdAt, DateTime? updatedAt, DateTime? deletedAt)
         {
+            Id = id;
             Title = title;
             Body = body;
-            IsDraft = true;
-            CreatedAt = DateTime.UtcNow;
+            IsDraft = isDraft;
+            CreatedAt = createdAt;
+            UpdatedAt = updatedAt;
+            DeletedAt = deletedAt;
         }
     }
 }

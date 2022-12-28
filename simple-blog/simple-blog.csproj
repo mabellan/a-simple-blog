@@ -31,6 +31,7 @@
     <None Remove="Domain\Post\Services\" />
     <None Remove="Infrastructure\Delivery\Configuration\" />
     <None Remove="Domain\Post\Command\" />
+    <None Remove="Domain\Post\Query\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
@@ -45,5 +46,6 @@
     <Folder Include="Domain\Post\Services\" />
     <Folder Include="Infrastructure\Delivery\Configuration\" />
     <Folder Include="Domain\Post\Command\" />
+    <Folder Include="Domain\Post\Query\" />
   </ItemGroup>
 </Project>

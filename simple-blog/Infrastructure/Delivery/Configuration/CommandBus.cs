@@ -21,6 +21,19 @@ namespace simple_blog.Infrastructure.Delivery.Configuration
     public class CommandBus: ICommandBus
     {
         private readonly Dictionary<Type, object> _handlers = new Dictionary<Type, object>();
+        private static CommandBus _instance;
+
+        public static CommandBus Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new CommandBus();
+                }
+                return _instance;
+            }
+        }
 
         public void RegisterHandler<TCommand>(ICommandHandler<TCommand> handler) where TCommand : ICommand
         {

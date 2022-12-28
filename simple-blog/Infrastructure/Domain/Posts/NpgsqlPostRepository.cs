@@ -98,14 +98,26 @@ namespace simple_blog.Infrastructure.Domain.Posts
             return ToDomain(entity);
         }
 
-        private static PostgresqlPost FromDomain(Post post)
+        private PostgresqlPost FromDomain(Post post)
         {
-            return new PostgresqlPost(post.Title, post.Body);
+            context.ChangeTracker.Clear();
+
+            return new PostgresqlPost(
+                post.Id,
+                post.Title,
+                post.Body,
+                post.IsDraft,
+                post.CreatedAt,
+                post.UpdatedAt,
+                post.DeletedAt
+                );
         }
 
-        private static Post ToDomain(PostgresqlPost entity)
+        private Post ToDomain(PostgresqlPost entity)
         {
-            return new Post(entity.Title, entity.Body);
+            context.ChangeTracker.Clear();
+
+            return new Post(entity.Id, entity.Title, entity.Body, entity.IsDraft, entity.CreatedAt);
         }
     }
 }
