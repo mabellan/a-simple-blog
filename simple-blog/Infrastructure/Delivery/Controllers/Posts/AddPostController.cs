@@ -8,7 +8,6 @@ using simple_blog.Domain.Post.Model;
 using simple_blog.Infrastructure.Delivery.Configuration;
 using simple_blog.Infrastructure.Delivery.Controllers.Base;
 using simple_blog.Infrastructure.Delivery.Models.Posts;
-using simple_blog.Services;
 
 namespace simple_blog.Infrastructure.Delivery.Controllers.Posts
 {

@@ -18,7 +18,6 @@ using simple_blog.Domain.Post.Query;
 using simple_blog.Infrastructure.Delivery.Configuration;
 using simple_blog.Infrastructure.Domain.Posts;
 using simple_blog.Infrastructure.Persistance.Database;
-using simple_blog.Services;
 
 namespace simple_blog
 {
@@ -39,10 +38,9 @@ namespace simple_blog
             services.AddCors();
             services.AddSingleton<ICommandBus, CommandBus>();
             services.AddScoped<IPostRepository, NpgsqlPostRepository>();
-            services.AddScoped<PostsService, PostsService>();
-
 
             services.AddTransient<IQueryHandler<GetPostByIdQuery, Post>, GetPostByIdQueryHandler>();
+            services.AddTransient<IQueryHandler<GetPostsQuery, List<Post>>, GetPostsQueryHandler>();
 
             services.AddTransient<QueryBus>();
 
