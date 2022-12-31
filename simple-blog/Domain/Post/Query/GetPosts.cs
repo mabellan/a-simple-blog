@@ -29,7 +29,6 @@ namespace simple_blog.Domain.Post.Query
 
         public List<aPost> Handle(GetPostsQuery query)
         {
-            int a = 1;
             return _postRepository.List(query.TitleFilter, query.Page);
         }
     }

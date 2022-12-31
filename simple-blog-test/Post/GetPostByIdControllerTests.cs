@@ -1,30 +1,23 @@
-﻿using System.Net;
-using simple_blog;
-using simple_blog.Domain.Post.Model;
-using Xunit;
+﻿namespace simple_blog_test;
+using System.Net;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Assert = Xunit.Assert;
-using System.Net.Http.Json;
-using Microsoft.Extensions.Hosting;
+using Xunit;
 
-namespace simple_blog_test.Controllers
+[TestClass]
+public class GetPostByIdControllerTests : IClassFixture<WebApplicationFactory<simple_blog.Startup>>
 {
-    [Collection("GetPostByIdControllerTest")]
-    public class GetPostByIdControllerTest
+    readonly HttpClient _client;
+    public GetPostByIdControllerTests(WebApplicationFactory<simple_blog.Startup> application)
     {
-        [Fact]
-        public async void TestAPI()
-        {
-            // Crea una instancia de HttpClient
-            var client = new HttpClient();
+        _client = application.CreateClient();
+    }
 
-            // Realiza una solicitud HTTP a tu API
-            var response = await client.GetAsync("http://localhost:5000/api/endpoint");
+    [Fact]
+    public async Task GET_retrieves_a_post_by_id()
+    {
+        int id = 1;
+        var response = await _client.GetAsync($"/api/posts/{id}");
 
-            // Valida el contenido de la respuesta
-            var responseContent = await response.Content.ReadAsStringAsync();
-            Assert.Equal("Resultado esperado", responseContent);
-        }
+        response.StatusCode.Equals(HttpStatusCode.OK);
     }
 }
-
