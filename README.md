@@ -4,7 +4,7 @@ This project was created in order to share my knowladge in Software Development.
 Hexagonal Architecture and CQRS pattern. The idea was not to create a full blog, just a piece of that where you can create a post, update it and list all 
 the available post.
 
-## Actions
+## API endpoints
 The main actions you can do with this API are:
 1. Create a new post: POST: `/api/posts`
 2. Update an existing post. PUT: `/api/posts`
@@ -16,6 +16,9 @@ The project uses the following patterns, architectures and technologies:
 + SOLID
 + CQRS pattern (Command Bus Pattern and Query Bus Pattern)
 + A database Dockerized.
+
+## Github actions
+I've created an action that runs the tests in every Pull Request to verify the code.
 
 ## TODO:
 + Add more actions.
