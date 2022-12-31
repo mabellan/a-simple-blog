@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using simple_blog.Domain.Post.Query;
+using simple_blog.Infrastructure.Delivery.Configuration;
 using simple_blog.Infrastructure.Delivery.Controllers.Base;
-using simple_blog.Services;
 
 namespace simple_blog.Infrastructure.Delivery.Controllers.Posts
 {
     [Route("api/posts")]
     public class GetPostByIdController : BaseController
     {
-        private readonly PostsService postsService;
+        private readonly QueryBus _queryBus;
 
-        public GetPostByIdController(PostsService _postsService)
+        public GetPostByIdController(QueryBus queryBus)
         {
-            postsService = _postsService;
+            _queryBus = queryBus;
         }
 
         [HttpGet("{id}")]
@@ -23,7 +24,7 @@ namespace simple_blog.Infrastructure.Delivery.Controllers.Posts
         {
             try
             {
-                return Ok(postsService.Get(id));
+                return Ok(_queryBus.Execute(new GetPostByIdQuery(id)));
             }
             catch (Exception e)
             {

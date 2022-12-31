@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using simple_blog.Domain.Post.Command;
+using simple_blog.Domain.Post.Model;
+using simple_blog.Infrastructure.Delivery.Configuration;
 using simple_blog.Infrastructure.Delivery.Controllers.Base;
 using simple_blog.Infrastructure.Delivery.Models.Posts;
-using simple_blog.Services;
 
 namespace simple_blog.Infrastructure.Delivery.Controllers.Posts
 {
     [Route("api/posts")]
     public class AddPostController : BaseController
     {
-        private readonly PostsService postsService;
+        private readonly ICommandBus _commandBus;
 
-        public AddPostController(PostsService _postsService)
+        public AddPostController(ICommandBus commandBus, IPostRepository postRepository)
         {
-            postsService = _postsService;
+            _commandBus = commandBus;
+            _commandBus.RegisterHandler(new AddPostCommandHandler(postRepository));
         }
 
         [HttpPost]
@@ -24,7 +27,8 @@ namespace simple_blog.Infrastructure.Delivery.Controllers.Posts
         {
             try
             {
-                return Ok(postsService.Add(postRequest));
+                _commandBus.Send(new AddPostCommand(postRequest.Title, postRequest.Body));
+                return Ok();
             }
             catch (Exception e)
             {

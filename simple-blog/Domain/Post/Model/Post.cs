@@ -19,12 +19,13 @@ namespace simple_blog.Domain.Post.Model
 
         public DateTime? DeletedAt { get; set; }
 
-        public Post(string title, string body)
+        public Post(int id, string title, string body, bool isDraft, DateTime createdAt)
         {
+            Id = id;
             Title = title;
             Body = body;
-            IsDraft = true;
-            CreatedAt = DateTime.Now;
+            IsDraft = isDraft;
+            CreatedAt = createdAt;
         }
     }
 }

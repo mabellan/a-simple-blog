@@ -22,8 +22,8 @@ namespace simple_blog.Infrastructure.Persistance.Database
                 entity.Property(e => e.Body).HasColumnType("VARCHAR(MAX)");
                 entity.Property(e => e.IsDraft).HasColumnType("BOOLEAN");
 
-                entity.Property(e => e.CreatedAt).HasColumnType("DATETIME");
-                entity.Property(e => e.UpdatedAt).HasColumnType("DATETIME");
+                entity.Property(e => e.CreatedAt).HasColumnType("TIMESTAMP");
+                entity.Property(e => e.UpdatedAt).HasColumnType("TIMESTAMP");
 
                 entity.HasQueryFilter(p => p.DeletedAt == null);
             });

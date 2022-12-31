@@ -10,6 +10,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.1" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="2.4.2" />
   </ItemGroup>
 
 
@@ -31,6 +32,7 @@
     <None Remove="Domain\Post\Services\" />
     <None Remove="Infrastructure\Delivery\Configuration\" />
     <None Remove="Domain\Post\Command\" />
+    <None Remove="Domain\Post\Query\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
@@ -45,5 +47,6 @@
     <Folder Include="Domain\Post\Services\" />
     <Folder Include="Infrastructure\Delivery\Configuration\" />
     <Folder Include="Domain\Post\Command\" />
+    <Folder Include="Domain\Post\Query\" />
   </ItemGroup>
 </Project>

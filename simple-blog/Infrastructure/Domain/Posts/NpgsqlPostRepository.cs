@@ -9,7 +9,7 @@ namespace simple_blog.Infrastructure.Domain.Posts
 {
 	public class NpgsqlPostRepository: IPostRepository
 	{
-        public static int MAX_ELEMENTS_PER_PAGE = 10;
+        public static readonly int MAX_ELEMENTS_PER_PAGE = 10;
 
         private readonly SimpleBlogDatabase context;
 
@@ -29,7 +29,7 @@ namespace simple_blog.Infrastructure.Domain.Posts
             context.Post.Add(entity);
             context.SaveChanges();
 
-            return ToDomain(entity);
+            return ToDomain(entity, context);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace simple_blog.Infrastructure.Domain.Posts
         /// <returns></returns>
         public Post GetById(int id)
         {
-            return ToDomain(context.Post.Find(id));
+            return ToDomain(context.Post.Find(id), context);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace simple_blog.Infrastructure.Domain.Posts
 
             int skip = (page - 1) * MAX_ELEMENTS_PER_PAGE;
 
-            return query.Skip(skip).Take(MAX_ELEMENTS_PER_PAGE).OrderByDescending(post => post.CreatedAt).Select(entity => ToDomain(entity)).ToList();
+            return query.Skip(skip).Take(MAX_ELEMENTS_PER_PAGE).OrderByDescending(post => post.CreatedAt).Select(entity => ToDomain(entity, context)).ToList();
         }
 
         /// <summary>
@@ -95,17 +95,29 @@ namespace simple_blog.Infrastructure.Domain.Posts
             context.Post.Update(entity);
             context.SaveChanges();
 
-            return ToDomain(entity);
+            return ToDomain(entity, context);
         }
 
-        private static PostgresqlPost FromDomain(Post post)
+        private PostgresqlPost FromDomain(Post post)
         {
-            return new PostgresqlPost(post.Title, post.Body);
+            context.ChangeTracker.Clear();
+
+            return new PostgresqlPost(
+                post.Id,
+                post.Title,
+                post.Body,
+                post.IsDraft,
+                post.CreatedAt,
+                post.UpdatedAt,
+                post.DeletedAt
+                );
         }
 
-        private static Post ToDomain(PostgresqlPost entity)
+        private static Post ToDomain(PostgresqlPost entity, SimpleBlogDatabase context)
         {
-            return new Post(entity.Title, entity.Body);
+            context.ChangeTracker.Clear();
+
+            return new Post(entity.Id, entity.Title, entity.Body, entity.IsDraft, entity.CreatedAt);
         }
     }
 }

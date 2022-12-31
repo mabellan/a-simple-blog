@@ -9,14 +9,20 @@ public class PostTest
     public void Creates_New_Post_And_Validates()
     {
         // Arrange
+        int id = 1;
         string title = "This is a title test";
         string body = "This is a body test";
-        Post expected = new Post(title, body);
+        bool isDraft = true;
+        DateTime createdAt = DateTime.Now;
+        Post expected = new Post(id, title, body, isDraft, createdAt);
 
         // Assert
+        Assert.AreEqual(expected.Id, id);
         Assert.AreEqual(expected.Title, title);
         Assert.AreEqual(expected.Body, body);
         Assert.AreEqual(expected.IsDraft, true);
+        Assert.AreEqual(expected.CreatedAt, createdAt);
+
 
     }
 }
