@@ -7,10 +7,11 @@
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.1" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.1" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="2.4.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
 
@@ -33,6 +34,8 @@
     <None Remove="Infrastructure\Delivery\Configuration\" />
     <None Remove="Domain\Post\Command\" />
     <None Remove="Domain\Post\Query\" />
+    <None Remove="Swashbuckle.AspNetCore" />
+    <None Remove="Infrastructure\Persistance\Database\Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\" />
@@ -48,5 +51,6 @@
     <Folder Include="Infrastructure\Delivery\Configuration\" />
     <Folder Include="Domain\Post\Command\" />
     <Folder Include="Domain\Post\Query\" />
+    <Folder Include="Infrastructure\Persistance\Database\Scripts\" />
   </ItemGroup>
 </Project>

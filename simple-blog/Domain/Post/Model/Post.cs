@@ -19,6 +19,11 @@ namespace simple_blog.Domain.Post.Model
 
         public DateTime? DeletedAt { get; set; }
 
+        public Post()
+        {
+
+        }
+
         public Post(int id, string title, string body, bool isDraft, DateTime createdAt)
         {
             Id = id;
