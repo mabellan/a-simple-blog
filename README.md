@@ -15,7 +15,7 @@ The project uses the following patterns, architectures and technologies:
 + Hexagonal architecture
 + SOLID
 + CQRS pattern (Command Bus Pattern and Query Bus Pattern)
-+ A database Dockerized.
++ Application Dockerized with Docker Compose.
 
 ## Github actions
 I've created an action that runs the tests in every Pull Request to verify the code.
