@@ -12,17 +12,10 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 7.0.x
-    - name: Install Roslynator Analyzers
-      uses: NuGet/setup-nuget@v1
-      with:
-        nuget-version: 'latest'
-    - run: dotnet tool install --global Roslynator.Analyzers
     - name: Restore dependencies
       run: dotnet restore
     - name: Build and test
       run: dotnet test --logger "trx;LogFileName=test_results.trx"
-    - name: Run Roslynator Analyzers
-      run: dotnet tool run roslynator.analyzers -- -d src/** -f net7.0
     - name: Upload test results
       uses: actions/upload-artifact@v2
       with:
