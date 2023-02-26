@@ -1,4 +1,4 @@
-#Simple Blog Application
+# Simple Blog Application
 
 Simple Blog is a .NET Core 7 application built using Entity Framework as the ORM. The application follows the hexagonal architecture, CQRS, and SOLID design principles. It includes six main methods including create, update, list, make post available, and swagger.
 
@@ -6,7 +6,7 @@ The application uses PostgreSQL as its database and can be easily deployed using
 
 This repository serves as a showcase of my programming skills and can also serve as a foundation for anyone looking to build a similar blog application.
 
-##Features
+## Features
 
 1. Create, update, and list blog posts
 2. Make blog posts available
@@ -18,7 +18,7 @@ This repository serves as a showcase of my programming skills and can also serve
 8. Docker Compose deployment
 9. Simple tests
 
-##Getting Started
+## Getting Started
 
 1. Clone this repository
 2. Install Docker and Docker Compose
@@ -27,14 +27,14 @@ This repository serves as a showcase of my programming skills and can also serve
 5. Open your browser and navigate to http://localhost:5000/swagger/index.html to access the Swagger documentation
 6. Test the application using Swagger or your preferred API testing tool
 
-##Technologies Used
+## Technologies Used
 
 + .NET Core 7
 + Entity Framework
 + PostgreSQL
 + Docker Compose
 
-##Contributing
+## Contributing
 
 If you would like to contribute to this project, please follow the standard GitHub flow:
 
