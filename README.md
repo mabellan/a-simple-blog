@@ -1,36 +1,45 @@
-# A Simple Blog
-## Purpose
-This project was created in order to share my knowladge in Software Development. The principal idea was to create a simple blog with 
-Hexagonal Architecture and CQRS pattern. The idea was not to create a full blog, just a piece of that where you can create a post, update it and list all 
-the available post.
+#Simple Blog Application
 
-## API endpoints
-The main actions you can do with this API are:
-1. Create a new post: POST: `/api/posts`
-2. Update an existing post. PUT: `/api/posts`
-3. Make post available or mark an available one as a draft. PATCH: `/api/posts`
-4. Swagger: `/swagger`
+Simple Blog is a .NET Core 7 application built using Entity Framework as the ORM. The application follows the hexagonal architecture, CQRS, and SOLID design principles. It includes six main methods including create, update, list, make post available, and swagger.
 
-## Project structure
-The project uses the following patterns, architectures and technologies:
-+ Hexagonal architecture
-+ SOLID
-+ CQRS pattern (Command Bus Pattern and Query Bus Pattern)
-+ Application Dockerized with Docker Compose.
+The application uses PostgreSQL as its database and can be easily deployed using Docker Compose. It also comes with simple tests to ensure its functionality.
 
-## Github actions
-I've created an action that runs the tests in every Pull Request to verify the code.
+This repository serves as a showcase of my programming skills and can also serve as a foundation for anyone looking to build a similar blog application.
 
-## Run locally the application
-1. GIT clone.
-2. Start Docker Desktop or Docker deamon.
-3. Open a terminal and go to the folder `/simple-blog`.
-4. Run `docker-compose up -d`
-5. Open your browser and open `http://localhost/swagger`
+##Features
 
-## TODO:
-+ Add more actions.
-+ Improve the tests.
-+ Improve CQRS pattern.
+1. Create, update, and list blog posts
+2. Make blog posts available
+3. Swagger documentation
+4.  Hexagonal architecture
+5. CQRS
+6. SOLID design principles
+7. PostgreSQL database
+8. Docker Compose deployment
+9. Simple tests
 
-If you have a recomendation, please, let me know and I will try to add the feature :)
+##Getting Started
+
+1. Clone this repository
+2. Install Docker and Docker Compose
+3. Navigate to the root directory of the cloned repository in your terminal
+4. Run docker-compose up
+5. Open your browser and navigate to http://localhost:5000/swagger/index.html to access the Swagger documentation
+6. Test the application using Swagger or your preferred API testing tool
+
+##Technologies Used
+
++ .NET Core 7
++ Entity Framework
++ PostgreSQL
++ Docker Compose
+
+##Contributing
+
+If you would like to contribute to this project, please follow the standard GitHub flow:
+
+1. Fork this repository
+2. Create a new branch for your feature or bug fix
+3. Write your code and tests
+4. Ensure all tests pass
+5. Submit a pull request to this repository
