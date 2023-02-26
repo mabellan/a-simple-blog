@@ -4,7 +4,7 @@ Simple Blog is a .NET Core 7 application built using Entity Framework as the ORM
 
 The application uses PostgreSQL as its database and can be easily deployed using Docker Compose. It also comes with simple tests to ensure its functionality.
 
-This repository serves as a showcase of my programming skills and can also serve as a foundation for anyone looking to build a similar blog application.
+This repository serves as a showcase of my programming skills and can also serve as a foundation for anyone looking to build a similar API application.
 
 ## Features
 
