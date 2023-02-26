@@ -23,8 +23,8 @@ This repository serves as a showcase of my programming skills and can also serve
 1. Clone this repository
 2. Install Docker and Docker Compose
 3. Navigate to the root directory of the cloned repository in your terminal
-4. Run docker-compose up
-5. Open your browser and navigate to http://localhost:5000/swagger/index.html to access the Swagger documentation
+4. Run `docker-compose up -d`
+5. Open your browser and navigate to http://localhost/swagger/index.html to access the Swagger documentation
 6. Test the application using Swagger or your preferred API testing tool
 
 ## Technologies Used
